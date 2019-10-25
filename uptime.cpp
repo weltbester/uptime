@@ -8,7 +8,7 @@
 #include <sstream>
 #include <fstream>
 #include <istream>
-#include <map>
+#include <vector>
 #include <string>
 using namespace std;
 
@@ -18,20 +18,27 @@ using namespace std;
 /* Instance Variables */
 
 /* Prototypes */
-void readUptimeCisco(string filename);
 int uptimeCisco(string filename);
 
 int main() {
     ifstream infile;
 
-    readUptimeCisco("uptime.txt");
+    uptimeCisco("uptime.txt");
 
     cout << endl;
     return 0;
 } // main
 
 /* Functions */
-void readUptimeCisco(string filename) {
+/*
+ * Function: uptimeCisco
+ * Usage: int n = uptimeCisco(string &filename);
+ * ---------------------------------------------
+
+ */
+int uptimeCisco(string filename) {
+    vector<int> periods;
+    vector<string> times;
     ifstream infile;
     string line;
     string word;
@@ -49,18 +56,34 @@ void readUptimeCisco(string filename) {
             while (uptLine >> word) {
                 if (word == "is") {
                 uptLine >> digit1;
+                periods.push_back(digit1);
                 uptLine >> time1;
+                times.push_back(time1);
                 uptLine >> digit2;
+                periods.push_back(digit2);
                 uptLine >> time2;
+                times.push_back(time2);
                 uptLine >> digit3;
+                periods.push_back(digit3);
                 uptLine >> time3;
+                times.push_back(time3);
                 uptLine >> digit4;
+                periods.push_back(digit4);
                 uptLine >> time4;
+                times.push_back(time4);
                 uptLine >> digit5;
+                periods.push_back(digit5);
                 uptLine >> time5;
+                times.push_back(time5);
                 }
             }
-            cout << digit1 << endl;
+            for (int i = 0; i < periods.size() - 1; i++) {
+                    cout << periods[i] << " ";
+                }
+                cout << endl;
+                 for (int i = 0; i < times.size() - 1; i++) {
+                    cout << times[i] << " ";
+                }
         }
         /*
         if (time1 == "years") {
@@ -71,4 +94,5 @@ void readUptimeCisco(string filename) {
         }
         */
     }
+    return -1;
 }
