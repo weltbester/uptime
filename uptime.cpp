@@ -1,5 +1,5 @@
 /*
- * Copyright: Georg Pohl, 70174 Stuttgart
+ * Copyright 2019: Georg Pohl, 70174 Stuttgart
  * Filename: uptime.cpp
  */
 #include <cctype>
@@ -34,7 +34,10 @@ int main() {
  * Function: uptimeCisco
  * Usage: int n = uptimeCisco(string &filename);
  * ---------------------------------------------
-
+ * This function reads the file "show version" in every folder with a Cisco Router.
+ * It extracts the different uptime values (year, weeks, days, hours) and then calculates
+ * the whole uptime in days. If a routers uptime is less than 24 hours, this is handled as
+ * an uptime of 1 day.
  */
 int uptimeCisco(string filename) {
     vector<int> periods;
